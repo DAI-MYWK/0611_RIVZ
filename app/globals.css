@@ -1,0 +1,2226 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* リセットCSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #1a3a6c; /* ネイビーブルー */
+  --secondary-color: #ffffff; /* ホワイト */
+  --accent-color: #3a5a8c; /* 薄めのネイビー */
+  --text-color: #333333;
+  --light-bg: #f5f7fa;
+  --brown-text: #4a3000;
+  --orange-accent: #e67e22;
+  --beige-bg: #f9f5eb;
+  --blue-bg: #e6f0fa;
+  --blue-accent: #2c5282;
+  --blue-light: #a3bfdf;
+  --orange-bg: #f47d30;
+  --orange-light: #f8a06b;
+  --orange-dark: #e05e00;
+  --gray-bg: #f2f2f2;
+  --gray-text: #666666;
+  --gray-border: #dddddd;
+  --success-color: #48bb78;
+  --error-color: #e53e3e;
+  --rivz-gradient: linear-gradient(135deg, #1a3a6c 0%, #3a5a8c 50%, #5a7aac 100%);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-m-plus-rounded), system-ui, sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+}
+
+/* ヘッダー上部 */
+.header-top {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  font-size: 12px;
+  padding: 5px 20px;
+  text-align: left;
+}
+
+/* メインヘッダー */
+.header-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: var(--secondary-color);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 100;
+}
+
+/* ロゴ */
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.logo-text h1 {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin: 0;
+  line-height: 1;
+}
+
+.logo-text p {
+  font-size: 12px;
+  color: #666;
+  margin: 0;
+}
+
+/* ナビゲーション */
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  margin: 0 10px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: 20px;
+  transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+  background-color: var(--light-bg);
+  color: var(--primary-color);
+}
+
+/* お問い合わせボタン */
+.contact-button {
+  margin-left: 20px;
+}
+
+.free-consultation {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  padding: 10px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.free-consultation:hover {
+  background-color: var(--accent-color);
+}
+
+/* ヒーローセクション */
+.hero-section {
+  background-color: var(--light-bg);
+  padding: 70px 20px 170px;
+  position: relative;
+  overflow: hidden;
+  will-change: transform;
+  transition: transform 0.1s ease-out;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* ヒーロー画像スライドショー */
+.hero-image-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  z-index: 0;
+}
+
+.hero-image-slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.hero-bg-image {
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.1) 100%);
+  z-index: 2;
+}
+
+.hero-content {
+  position: relative;
+  max-width: 1300px;
+  margin: 0 auto;
+  z-index: 3;
+  display: flex;
+  justify-content: space-between;
+  min-height: 500px;
+}
+
+/* ヒーローテキスト */
+.hero-text-container {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 50px;
+}
+
+.hero-text {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 25px 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  max-width: 550px;
+  text-align: center;
+}
+
+.hero-text h2 {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+}
+
+.main-title h1 {
+  font-size: 48px;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 30px;
+  line-height: 1.2;
+}
+
+.main-title .service-line {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.dot {
+  color: var(--primary-color);
+  font-size: 72px;
+}
+
+/* 料金テキスト */
+.price-text {
+  display: inline-block;
+  color: var(--primary-color);
+  font-weight: bold;
+  margin-bottom: 25px;
+  font-size: 18px;
+}
+
+.price-text span {
+  font-size: 22px;
+  margin-right: 5px;
+  font-weight: bold;
+}
+
+/* サービスボタン */
+.service-button {
+  display: inline-block;
+  background: linear-gradient(135deg, #e67e22 0%, #f39c12 100%);
+  color: var(--secondary-color);
+  padding: 18px 35px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-bottom: 35px;
+  position: relative;
+  transition: all 0.3s ease;
+  font-size: 18px;
+  box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
+  border: 2px solid transparent;
+}
+
+.service-button:hover {
+  background: linear-gradient(135deg, #d35400 0%, #e67e22 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(230, 126, 34, 0.4);
+  border: 2px solid #f39c12;
+}
+
+.service-button::after {
+  content: ">";
+  position: absolute;
+  right: 20px;
+}
+
+/* 電話コンテナ */
+.phone-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  padding: 10px 15px;
+}
+
+.phone-icon {
+  margin-right: 15px;
+}
+
+.icon-circle {
+  width: 40px;
+  height: 40px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.phone-info p {
+  margin: 0;
+  font-size: 13px;
+}
+
+/* 電話番号ボタン */
+.phone-number-button {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  padding: 5px 15px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20px;
+  margin: 3px 0;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.phone-number-button:hover {
+  background-color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+.reception-hours {
+  color: #666;
+}
+
+/* ヒーロー画像 */
+.hero-badge {
+  flex: 0.5;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding-bottom: 50px;
+}
+
+/* 受賞バッジ */
+.award-badge {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  background-color: rgba(26, 58, 108, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 3px var(--primary-color);
+}
+
+.badge-content {
+  padding: 10px;
+}
+
+.stars {
+  font-size: 22px;
+  color: #ffd700;
+  margin-bottom: 5px;
+}
+
+.badge-content p {
+  font-size: 16px;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.number-one {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 5px 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.award-text {
+  font-size: 12px;
+  background-color: #fff;
+  color: var(--primary-color);
+  padding: 3px 8px;
+  border-radius: 10px;
+  display: inline-block;
+  margin-top: 5px;
+}
+
+/* 背景の装飾 */
+
+/* サービス概要セクション - オーバーラップデザイン */
+.service-overview-section {
+  position: relative;
+  margin-top: -100px;
+  padding: 0 20px 60px;
+  z-index: 10;
+}
+
+.service-overview-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  height: 700px;
+  will-change: transform, opacity;
+  transition: transform 0.2s ease-out, opacity 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+/* 背景画像 */
+.service-images-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.staff-bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.85);
+  z-index: 2;
+}
+
+/* コンテンツオーバーレイ */
+.service-content-overlay {
+  position: relative;
+  z-index: 3;
+  padding: 40px;
+  height: 100%;
+}
+
+/* サービスタイトルエリア */
+.service-title-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.service-title-button {
+  background-color: var(--light-bg);
+  border-left: 4px solid var(--primary-color);
+  padding: 8px 20px;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.service-title-button span {
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.service-certification {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.certification-text {
+  text-align: center;
+  margin: 0 15px;
+}
+
+.certification-text p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--brown-text);
+}
+
+.cert-highlight {
+  font-size: 20px !important;
+  font-weight: bold;
+}
+
+/* サービスメインコンテンツ */
+.service-main-content {
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 5;
+}
+
+.service-main-title {
+  font-size: 36px;
+  color: var(--brown-text);
+  margin: 0;
+  line-height: 1.3;
+  text-shadow: 1px 1px 0 white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white;
+}
+
+.service-highlight-title {
+  font-size: 48px;
+  color: var(--orange-accent);
+  margin: 10px 0;
+  line-height: 1.3;
+  text-shadow: 1px 1px 0 white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white;
+}
+
+.service-description {
+  max-width: 800px;
+  margin: 30px auto 0;
+  text-align: left;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.service-description p {
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* フローティング画像 */
+.floating-images {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.floating-image {
+  position: absolute;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.antique-image {
+  top: 10px; /* 50pxから10pxに変更してさらに上に移動 */
+  left: 50px;
+  width: 200px;
+  height: 200px;
+  transform: rotate(-5deg);
+}
+
+.staff-work-image {
+  top: 10px; /* 50pxから10pxに変更してさらに上に移動 */
+  right: 50px;
+  width: 200px;
+  height: 250px;
+  transform: rotate(3deg);
+}
+
+.decoration-image {
+  position: absolute;
+  z-index: 6;
+}
+
+.leaf1 {
+  top: 20%;
+  right: 10%;
+}
+
+.leaf2 {
+  bottom: 15%;
+  left: 5%;
+}
+
+/* RIVZの意味セクション */
+.rivz-meaning-section {
+  padding: 120px 20px;
+  background: var(--rivz-gradient);
+  color: white;
+  position: relative;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.rivz-meaning-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* 背景の大きなRIVZテキスト */
+.rivz-background-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20vw;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.05);
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+}
+
+.rivz-content {
+  position: relative;
+  z-index: 2;
+}
+
+.rivz-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.rivz-main-title {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  background: linear-gradient(45deg, #ffffff, #e6f0fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.rivz-subtitle {
+  font-size: 20px;
+  opacity: 0.9;
+  font-weight: 300;
+}
+
+.rivz-letters {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 80px;
+}
+
+.rivz-letter-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 20px 15px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.rivz-letter-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.rivz-letter-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.letter-symbol {
+  font-size: 40px;
+  font-weight: 900;
+  margin-bottom: 15px;
+  background: linear-gradient(45deg, #ffffff, #a3bfdf);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.letter-content h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+.letter-content p {
+  font-size: 14px;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.rivz-philosophy {
+  text-align: center;
+}
+
+.philosophy-quote {
+  margin-bottom: 40px;
+}
+
+.quote-text {
+  font-size: 32px;
+  font-weight: bold;
+  font-style: italic;
+  background: linear-gradient(45deg, #ffffff, #e6f0fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  display: inline-block;
+}
+
+.quote-text::before,
+.quote-text::after {
+  content: '"';
+  font-size: 48px;
+  color: rgba(255, 255, 255, 0.3);
+  position: absolute;
+  top: -10px;
+}
+
+.quote-text::before {
+  left: -30px;
+}
+
+.quote-text::after {
+  right: -30px;
+}
+
+.philosophy-description {
+  max-width: 800px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.philosophy-description p {
+  font-size: 18px;
+  line-height: 1.8;
+  opacity: 0.95;
+}
+
+/* 整理・片付けの実績例セクション - 青系背景に更新 */
+.examples-section {
+  padding: 80px 20px;
+  position: relative;
+  z-index: 5;
+  background-color: var(--blue-bg);
+  /* ストライプ背景を削除 */
+}
+
+/* アニメーション用のクラスを追加 */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  will-change: opacity, transform;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slide-in-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  will-change: opacity, transform;
+}
+
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  will-change: opacity, transform;
+}
+
+.slide-in-left.is-visible,
+.slide-in-right.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.scale-in {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  will-change: opacity, transform;
+}
+
+.scale-in.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.stagger-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  will-change: opacity, transform;
+}
+
+.stagger-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* アニメーションの初期表示を改善するためのスタイル */
+.service-image,
+.service-details,
+.contact-info,
+.contact-form {
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  will-change: opacity, transform;
+}
+
+.service-image:not(.is-visible),
+.contact-info:not(.is-visible) {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+.service-details:not(.is-visible),
+.contact-form:not(.is-visible) {
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+.service-content.reverse .service-image:not(.is-visible) {
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+.service-content.reverse .service-details:not(.is-visible) {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+.company-image:not(.is-visible),
+.company-details:not(.is-visible) {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.examples-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 32px;
+  color: var(--blue-accent);
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background-color: var(--blue-accent);
+}
+
+.examples-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.example-card {
+  background-color: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.example-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.example-image-container {
+  width: 100%;
+  height: 0;
+  padding-bottom: 70%; /* 正方形から長方形に変更 */
+  position: relative;
+  overflow: hidden;
+}
+
+.example-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.example-card:hover .example-image {
+  transform: scale(1.05);
+}
+
+.example-text {
+  padding: 25px;
+  text-align: center;
+}
+
+.example-text p {
+  font-size: 18px;
+  color: var(--blue-accent);
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+/* 不動産買取セクション */
+.real-estate-section {
+  padding: 0;
+  position: relative;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.real-estate-container {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.real-estate-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.real-estate-image {
+  height: 600px;
+  overflow: hidden;
+  position: relative;
+}
+
+.real-estate-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.real-estate-content {
+  background-color: var(--orange-bg);
+  color: white;
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.real-estate-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, var(--orange-light) 0%, var(--orange-bg) 70%);
+  opacity: 0.6;
+  z-index: 0;
+}
+
+.real-estate-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.fee-badge {
+  background-color: white;
+  color: var(--orange-bg);
+  font-weight: bold;
+  padding: 8px 20px;
+  border-radius: 5px;
+  display: inline-block;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.condition-text {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.real-estate-title {
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.real-estate-title h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.real-estate-title .highlight {
+  font-size: 36px;
+  margin-top: 5px;
+}
+
+.real-estate-description {
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.real-estate-description p {
+  font-size: 16px;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.real-estate-button-container {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.real-estate-button {
+  display: inline-block;
+  background-color: white;
+  color: var(--orange-bg);
+  padding: 15px 50px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.3s;
+  position: relative;
+}
+
+.real-estate-button:hover {
+  background-color: #f8f8f8;
+  transform: translateY(-3px);
+}
+
+.button-arrow {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+}
+
+/* 新しいサービスセクション共通スタイル */
+.service-section {
+  padding: 80px 20px;
+  position: relative;
+  z-index: 5;
+}
+
+.service-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.service-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.service-title {
+  font-size: 32px;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  position: relative;
+  display: inline-block;
+}
+
+.service-title::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background-color: var(--primary-color);
+}
+
+.service-subtitle {
+  font-size: 18px;
+  color: var(--gray-text);
+  margin-top: 20px;
+}
+
+.service-content {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.service-content.reverse {
+  flex-direction: row-reverse;
+}
+
+.service-image {
+  flex: 1;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.service-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.service-image:hover img {
+  transform: scale(1.03);
+}
+
+.service-details {
+  flex: 1;
+}
+
+.service-point {
+  margin-bottom: 30px;
+  position: relative;
+  padding-left: 60px;
+}
+
+.point-number {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 45px;
+  height: 45px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.service-point h3 {
+  font-size: 20px;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.service-point p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+.service-cta {
+  margin-top: 40px;
+  text-align: center;
+}
+
+/* 生前整理サービスセクション */
+.life-organizing-section {
+  background-color: var(--light-bg);
+}
+
+/* 特殊清掃サービスセクション */
+.special-cleaning-section {
+  background-color: white;
+}
+
+/* デジタル遺品整理サービスセクション */
+.digital-estate-section {
+  background-color: var(--blue-bg);
+}
+
+/* 無料相談セクション */
+.consultation-section {
+  padding: 80px 20px;
+  background-color: var(--primary-color);
+  color: white;
+  position: relative;
+  z-index: 5;
+}
+
+.consultation-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.consultation-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.consultation-title {
+  font-size: 32px;
+  margin-bottom: 10px;
+  position: relative;
+  display: inline-block;
+}
+
+.consultation-title::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background-color: white;
+}
+
+.consultation-subtitle {
+  font-size: 18px;
+  margin-top: 20px;
+  opacity: 0.9;
+}
+
+.consultation-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 50px;
+}
+
+.step-card {
+  background-color: white;
+  color: var(--text-color);
+  border-radius: 15px;
+  padding: 30px 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.step-card:hover {
+  transform: translateY(-5px);
+}
+
+.step-number {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: bold;
+  padding: 5px 15px;
+  border-radius: 20px;
+  margin-bottom: 15px;
+}
+
+.step-image {
+  width: 100%;
+  height: 200px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.step-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.step-card:hover .step-image img {
+  transform: scale(1.05);
+}
+
+.step-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+}
+
+.step-description {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.consultation-cta {
+  text-align: center;
+}
+
+.consultation-button {
+  display: inline-block;
+  background-color: white;
+  color: var(--primary-color);
+  padding: 15px 40px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.consultation-button:hover {
+  background-color: #f8f8f8;
+  transform: translateY(-3px);
+}
+
+/* 会社概要セクション */
+.company-section {
+  padding: 80px 20px;
+  background-color: var(--light-bg);
+  position: relative;
+  z-index: 5;
+}
+
+.company-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.company-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.company-title {
+  font-size: 32px;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  position: relative;
+  display: inline-block;
+}
+
+.company-title::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background-color: var(--primary-color);
+}
+
+.company-subtitle {
+  font-size: 18px;
+  color: var(--gray-text);
+  margin-top: 20px;
+}
+
+.company-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 50px;
+}
+
+.company-image {
+  flex: 1;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.company-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.company-image:hover img {
+  transform: scale(1.03);
+}
+
+.company-details {
+  flex: 1.5;
+}
+
+.company-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+
+.company-table th,
+.company-table td {
+  padding: 15px;
+  border-bottom: 1px solid var(--gray-border);
+}
+
+.company-table th {
+  width: 30%;
+  text-align: left;
+  font-weight: bold;
+  color: var(--primary-color);
+  vertical-align: top;
+}
+
+.company-table td {
+  padding-top: 5px;
+  display: table-cell; /* 修正: display: block; を display: table-cell; に変更 */
+}
+
+.company-philosophy {
+  background-color: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.company-philosophy h3 {
+  font-size: 20px;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  position: relative;
+  padding-left: 15px;
+}
+
+.company-philosophy h3::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 20px;
+  background-color: var(--primary-color);
+  border-radius: 2px;
+}
+
+.company-philosophy p {
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* お問い合わせフォームセクション */
+.contact-form-section {
+  padding: 80px 20px;
+  background-color: white;
+  position: relative;
+  z-index: 5;
+}
+
+.contact-form-container {
+  max-width: 900px; /* 1200pxから900pxに縮小 */
+  margin: 0 auto;
+}
+
+.contact-form-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.contact-form-title {
+  font-size: 32px;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  position: relative;
+  display: inline-block;
+}
+
+.contact-form-title::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background-color: var(--primary-color);
+}
+
+.contact-form-subtitle {
+  font-size: 18px;
+  color: var(--gray-text);
+  margin-top: 20px;
+}
+
+.contact-form-content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px; /* 50pxから40pxに縮小 */
+}
+
+.contact-info {
+  display: flex;
+  justify-content: center; /* space-betweenからcenterに変更 */
+  align-items: center;
+  background-color: var(--light-bg);
+  border-radius: 15px;
+  padding: 30px; /* 40pxから30pxに縮小 */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  gap: 40px; /* 要素間のギャップを追加 */
+}
+
+.contact-methods {
+  flex: 1;
+  text-align: center; /* 中央寄せを追加 */
+}
+
+.contact-phone,
+.contact-email {
+  margin-bottom: 25px; /* 30pxから25pxに縮小 */
+}
+
+.contact-phone h3,
+.contact-email h3 {
+  font-size: 18px;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 20px; /* 25pxから20pxに減らす */
+  display: inline-block; /* インラインブロック要素に変更 */
+}
+
+.contact-phone h3::before {
+  content: "📞";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.contact-email h3::before {
+  content: "✉️";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.contact-phone-number {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 5px;
+}
+
+.contact-hours,
+.contact-response {
+  font-size: 14px;
+  color: var(--gray-text);
+}
+
+.contact-email-address {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 5px;
+}
+
+.contact-image {
+  flex: 0.8; /* flexを1から0.8に縮小 */
+  text-align: center; /* rightからcenterに変更 */
+}
+
+.contact-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  max-height: 300px; /* 最大高さを制限 */
+}
+
+.contact-form {
+  background-color: var(--light-bg);
+  border-radius: 15px;
+  padding: 30px; /* 40pxから30pxに縮小 */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: var(--primary-color);
+}
+
+.required {
+  color: var(--error-color);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid var(--gray-border);
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+.form-privacy {
+  margin: 20px 0;
+  font-size: 14px;
+  color: var(--gray-text);
+}
+
+.form-submit {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.submit-button {
+  display: block; /* inline-blockからblockに変更 */
+  width: 100%; /* 横一杯に */
+  background-color: var(--primary-color);
+  color: white;
+  padding: 15px 50px;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.submit-button:hover {
+  background-color: var(--accent-color);
+  transform: translateY(-3px);
+}
+
+/* フッター */
+footer {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  padding: 60px 20px 20px;
+  position: relative;
+  z-index: 5;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.footer-info {
+  flex: 1;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.footer-logo .logo-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.footer-logo h3 {
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+.footer-contact p {
+  margin-bottom: 10px;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.footer-nav {
+  flex: 2;
+  display: flex;
+  justify-content: space-around;
+}
+
+.footer-nav-column h4 {
+  font-size: 16px;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.footer-nav-column h4::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background-color: var(--secondary-color);
+}
+
+.footer-nav-column ul {
+  list-style: none;
+}
+
+.footer-nav-column ul li {
+  margin-bottom: 10px;
+}
+
+.footer-nav-column ul li a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  font-size: 14px;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.footer-nav-column ul li a:hover {
+  opacity: 1;
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.copyright {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-links a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  font-size: 12px;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.footer-links a:hover {
+  opacity: 1;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 1024px) {
+  nav ul li {
+    margin: 0 5px;
+  }
+
+  nav ul li a {
+    font-size: 12px;
+    padding: 5px;
+  }
+
+  .service-main-title {
+    font-size: 30px;
+  }
+
+  .service-highlight-title {
+    font-size: 40px;
+  }
+
+  .antique-image {
+    width: 150px;
+    height: 150px;
+    top: 80px;
+    left: 30px;
+  }
+
+  .staff-work-image {
+    width: 150px;
+    height: 200px;
+    bottom: 80px;
+    right: 30px;
+  }
+
+  .service-overview-container {
+    height: 600px;
+  }
+
+  .examples-grid {
+    gap: 20px;
+  }
+
+  .real-estate-content {
+    padding: 40px 20px;
+  }
+
+  .real-estate-title h2 {
+    font-size: 24px;
+  }
+
+  .real-estate-title .highlight {
+    font-size: 30px;
+  }
+
+  .service-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .service-content.reverse {
+    flex-direction: column;
+  }
+
+  .consultation-steps {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .company-content {
+    flex-direction: column;
+  }
+
+  .contact-info {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .footer-nav {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  /* RIVZセクションのレスポンシブ */
+  .rivz-background-text {
+    font-size: 25vw;
+  }
+
+  .rivz-main-title {
+    font-size: 36px;
+  }
+
+  .rivz-letters {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .letter-symbol {
+    font-size: 35px;
+  }
+
+  .quote-text {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-main {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  nav {
+    margin: 15px 0;
+  }
+
+  .hero-content {
+    flex-direction: column;
+    padding: 20px 0;
+  }
+
+  .hero-text-container {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .hero-text {
+    width: 100%;
+    padding: 30px 20px;
+  }
+
+  .hero-badge {
+    width: 100%;
+    justify-content: center;
+    padding-bottom: 0;
+  }
+
+  .main-title h1 {
+    font-size: 40px;
+  }
+
+  .dot {
+    font-size: 40px;
+  }
+
+  .award-badge {
+    width: 120px;
+    height: 120px;
+  }
+
+  .number-one {
+    font-size: 24px;
+  }
+
+  .service-content-overlay {
+    padding: 20px;
+  }
+
+  .service-main-title {
+    font-size: 24px;
+  }
+
+  .service-highlight-title {
+    font-size: 32px;
+  }
+
+  .antique-image {
+    width: 120px;
+    height: 120px;
+    top: 60px;
+    left: 20px;
+  }
+
+  .staff-work-image {
+    width: 120px;
+    height: 160px;
+    bottom: 60px;
+    right: 20px;
+  }
+
+  .service-overview-container {
+    height: 500px;
+  }
+
+  .examples-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-content {
+    flex-direction: column;
+  }
+
+  .company-info {
+    margin-bottom: 20px;
+  }
+
+  .real-estate-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .real-estate-image {
+    height: 300px;
+  }
+
+  .real-estate-content {
+    padding: 40px 20px;
+  }
+
+  .real-estate-title h2 {
+    font-size: 22px;
+  }
+
+  .real-estate-title .highlight {
+    font-size: 28px;
+  }
+
+  .real-estate-description p {
+    font-size: 14px;
+  }
+
+  /* RIVZセクションのモバイル対応 */
+  .rivz-meaning-section {
+    padding: 80px 20px;
+  }
+
+  .rivz-background-text {
+    font-size: 30vw;
+  }
+
+  .rivz-main-title {
+    font-size: 28px;
+  }
+
+  .rivz-subtitle {
+    font-size: 16px;
+  }
+
+  .rivz-letter-card {
+    padding: 15px 10px;
+  }
+
+  .letter-symbol {
+    font-size: 30px;
+  }
+
+  .letter-content h3 {
+    font-size: 16px;
+  }
+
+  .letter-content p {
+    font-size: 12px;
+  }
+
+  .quote-text {
+    font-size: 20px;
+  }
+
+  .philosophy-description {
+    padding: 20px;
+  }
+
+  .philosophy-description p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  nav ul li {
+    margin: 5px;
+  }
+
+  .hero-text {
+    padding: 20px 15px;
+  }
+
+  .main-title h1 {
+    font-size: 32px;
+  }
+
+  .dot {
+    font-size: 32px;
+  }
+
+  .phone-number {
+    font-size: 22px !important;
+  }
+
+  .award-badge {
+    width: 100px;
+    height: 100px;
+    right: 10px;
+    bottom: 10px;
+  }
+
+  .stars {
+    font-size: 14px;
+  }
+
+  .number-one {
+    font-size: 20px;
+  }
+
+  .award-text {
+    font-size: 8px;
+  }
+
+  .service-title-button span {
+    font-size: 14px;
+  }
+
+  .certification-text p {
+    font-size: 12px;
+  }
+
+  .cert-highlight {
+    font-size: 16px !important;
+  }
+
+  .service-main-title {
+    font-size: 20px;
+  }
+
+  .service-highlight-title {
+    font-size: 26px;
+  }
+
+  .service-description p {
+    font-size: 14px;
+  }
+
+  .antique-image,
+  .staff-work-image {
+    display: none;
+  }
+
+  .service-overview-container {
+    height: 450px;
+  }
+
+  .examples-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .example-text p {
+    font-size: 14px;
+  }
+
+  .real-estate-image {
+    height: 200px;
+  }
+
+  .fee-badge {
+    font-size: 14px;
+    padding: 6px 15px;
+  }
+
+  .condition-text {
+    font-size: 16px;
+  }
+
+  .real-estate-title h2 {
+    font-size: 20px;
+  }
+
+  .real-estate-title .highlight {
+    font-size: 24px;
+  }
+
+  .real-estate-button {
+    padding: 12px 40px;
+    font-size: 14px;
+  }
+
+  .consultation-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .company-table th,
+  .company-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .company-table th {
+    border-bottom: none;
+    padding-bottom: 5px;
+  }
+
+  .company-table td {
+    padding-top: 5px;
+  }
+
+  /* RIVZセクションの小画面対応 */
+  .rivz-background-text {
+    font-size: 35vw;
+  }
+
+  .rivz-main-title {
+    font-size: 24px;
+  }
+
+  .rivz-letter-card {
+    padding: 12px 8px;
+  }
+
+  .letter-symbol {
+    font-size: 25px;
+  }
+
+  .letter-content h3 {
+    font-size: 14px;
+  }
+
+  .letter-content p {
+    font-size: 11px;
+  }
+
+  .quote-text {
+    font-size: 18px;
+  }
+
+  .quote-text::before,
+  .quote-text::after {
+    font-size: 32px;
+    top: -5px;
+  }
+
+  .quote-text::before {
+    left: -20px;
+  }
+
+  .quote-text::after {
+    right: -20px;
+  }
+
+  .philosophy-description p {
+    font-size: 14px;
+  }
+}
