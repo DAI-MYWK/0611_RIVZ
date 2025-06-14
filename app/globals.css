@@ -7,6 +7,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  max-width: 100%;
 }
 
 :root {
@@ -35,6 +36,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   body {
@@ -42,6 +44,7 @@
     color: var(--text-color);
     line-height: 1.6;
     overflow-x: hidden;
+    width: 100%;
   }
 }
 
@@ -93,16 +96,16 @@
 }
 
 /* ナビゲーション */
-nav ul {
+.desktop-nav ul {
   display: flex;
   list-style: none;
 }
 
-nav ul li {
+.desktop-nav ul li {
   margin: 0 10px;
 }
 
-nav ul li a {
+.desktop-nav ul li a {
   text-decoration: none;
   color: var(--text-color);
   font-size: 14px;
@@ -112,9 +115,190 @@ nav ul li a {
   transition: background-color 0.3s;
 }
 
-nav ul li a:hover {
+.desktop-nav ul li a:hover {
   background-color: var(--light-bg);
   color: var(--primary-color);
+}
+
+/* ヘッダー右側 */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* ハンバーガーメニューボタン */
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+
+.hamburger-line {
+  width: 100%;
+  height: 3px;
+  background-color: var(--primary-color);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.hamburger-line.active:nth-child(1) {
+  transform: rotate(45deg) translate(7px, 7px);
+}
+
+.hamburger-line.active:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-line.active:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* モバイルメニュー */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1000;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu.open {
+  visibility: visible;
+  opacity: 1;
+}
+
+.mobile-menu-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.mobile-menu-content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 280px;
+  height: 100%;
+  background-color: white;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  overflow-y: auto;
+}
+
+.mobile-menu.open .mobile-menu-content {
+  transform: translateX(0);
+}
+
+.mobile-menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid var(--gray-border);
+}
+
+.mobile-logo {
+  display: flex;
+  align-items: center;
+}
+
+.mobile-logo .logo-icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 8px;
+}
+
+.mobile-logo h2 {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin: 0;
+  line-height: 1;
+}
+
+.mobile-logo p {
+  font-size: 10px;
+  color: #666;
+  margin: 0;
+}
+
+.close-menu {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--text-color);
+  cursor: pointer;
+  padding: 5px;
+  line-height: 1;
+}
+
+.mobile-nav {
+  padding: 20px 0;
+}
+
+.mobile-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mobile-nav ul li {
+  margin: 0;
+}
+
+.mobile-nav ul li a {
+  display: block;
+  padding: 15px 20px;
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 16px;
+  font-weight: 500;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.3s;
+}
+
+.mobile-nav ul li a:hover {
+  background-color: var(--light-bg);
+  color: var(--primary-color);
+}
+
+.mobile-menu-cta {
+  padding: 20px;
+  border-top: 1px solid var(--gray-border);
+}
+
+.mobile-consultation-button {
+  display: block;
+  width: 100%;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 15px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.mobile-consultation-button:hover {
+  background-color: var(--accent-color);
 }
 
 /* お問い合わせボタン */
@@ -176,6 +360,23 @@ nav ul li a:hover {
 .hero-bg-image {
   object-fit: cover;
   object-position: center;
+}
+
+/* モバイル用ヒーロー画像の調整 */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 50px 20px 120px;
+  }
+  
+  .hero-bg-image {
+    object-fit: cover;
+    object-position: center top;
+  }
+  
+  .hero-image-slide {
+    height: auto;
+    aspect-ratio: 16/9;
+  }
 }
 
 .hero-overlay {
@@ -1887,38 +2088,79 @@ footer {
 }
 
 @media (max-width: 768px) {
-  .header-main {
-    flex-direction: column;
-    padding: 10px;
+  /* 横スクロール防止 */
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  * {
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
-  nav {
-    margin: 15px 0;
+  .header-main {
+    padding: 10px 15px;
+  }
+
+  /* PC用ナビゲーションを非表示 */
+  .desktop-nav {
+    display: none;
+  }
+
+  /* ハンバーガーメニューボタンを表示 */
+  .hamburger-menu {
+    display: flex;
+  }
+
+  /* お問い合わせボタンをモバイルで調整 */
+  .contact-button .free-consultation {
+    padding: 8px 16px;
+    font-size: 12px;
   }
 
   .hero-content {
     flex-direction: column;
     padding: 20px 0;
+    width: 100%;
+    max-width: 100%;
   }
 
   .hero-text-container {
     width: 100%;
     margin-bottom: 30px;
+    align-items: flex-start;
+    padding-top: 50px;
+    padding-bottom: 0;
   }
 
   .hero-text {
     width: 100%;
     padding: 30px 20px;
   }
+  
+  .hero-text h2 {
+    font-size: 20px;
+  }
+  
+  /* モバイル用CTAボタンの調整 */
+  .hero-text .service-button {
+    width: 100%;
+    min-width: 90%;
+    padding: 15px 20px;
+    min-height: 48px;
+    font-size: 16px;
+  }
 
   .hero-badge {
-    width: 100%;
-    justify-content: center;
-    padding-bottom: 0;
+    display: none;
   }
 
   .main-title h1 {
     font-size: 40px;
+    line-height: 1.4;
+    word-break: keep-all;
   }
 
   .dot {
@@ -1936,6 +2178,8 @@ footer {
 
   .service-content-overlay {
     padding: 20px;
+    height: auto;
+    min-height: 100%;
   }
 
   .service-main-title {
@@ -1947,25 +2191,41 @@ footer {
   }
 
   .antique-image {
-    width: 120px;
-    height: 120px;
-    top: 60px;
-    left: 20px;
+    display: none;
   }
 
   .staff-work-image {
-    width: 120px;
-    height: 160px;
-    bottom: 60px;
-    right: 20px;
+    display: none;
+  }
+  
+  /* フローティング画像を非表示 */
+  .floating-images {
+    display: none;
   }
 
   .service-overview-container {
-    height: 500px;
+    height: auto;
+    min-height: 600px;
+    padding-top: 0;
+    width: 100%;
+    max-width: 100%;
   }
 
   .examples-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+  
+  /* サービス内容カードの調整 */
+  .consultation-steps {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+  }
+  
+  /* カード内の高さを統一 */
+  .step-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 220px;
   }
 
   .footer-content {
@@ -2037,12 +2297,18 @@ footer {
     font-size: 20px;
   }
 
-  .philosophy-description {
-    padding: 20px;
+  .quote-text::before,
+  .quote-text::after {
+    font-size: 32px;
+    top: -5px;
   }
 
-  .philosophy-description p {
-    font-size: 16px;
+  .quote-text::before {
+    left: -20px;
+  }
+
+  .quote-text::after {
+    right: -20px;
   }
 }
 
@@ -2058,6 +2324,10 @@ footer {
 
   .hero-text {
     padding: 20px 15px;
+  }
+  
+  .hero-text h2 {
+    font-size: 18px;
   }
 
   .main-title h1 {
@@ -2111,8 +2381,13 @@ footer {
     font-size: 26px;
   }
 
+  .service-description {
+    margin-bottom: 20px;
+  }
+  
   .service-description p {
     font-size: 14px;
+    line-height: 1.6;
   }
 
   .antique-image,
@@ -2121,7 +2396,8 @@ footer {
   }
 
   .service-overview-container {
-    height: 450px;
+    height: auto;
+    min-height: 550px;
   }
 
   .examples-grid {
@@ -2208,8 +2484,7 @@ footer {
 
   .quote-text::before,
   .quote-text::after {
-    font-size: 32px;
-    top: -5px;
+    font-size: 14px;
   }
 
   .quote-text::before {
@@ -2222,5 +2497,16 @@ footer {
 
   .philosophy-description p {
     font-size: 14px;
+  }
+  
+  /* フッター情報の調整 */
+  .footer-content {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  /* h2見出しのletter-spacing調整 */
+  h2 {
+    letter-spacing: normal;
   }
 }

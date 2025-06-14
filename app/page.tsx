@@ -23,6 +23,9 @@ export default function Home() {
   const [currentHeroImage, setCurrentHeroImage] = useState(0)
   const heroImages = ["/images/hero03.png", "/images/hero02.png", "/images/hero04.png"]
 
+  // ハンバーガーメニューの状態
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -50,6 +53,16 @@ export default function Home() {
       address: "",
       message: "",
     })
+  }
+
+  // ハンバーガーメニューの開閉
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen)
+  }
+
+  // モバイルメニューのリンククリック時にメニューを閉じる
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false)
   }
 
   // スクロールアニメーション用の関数
@@ -257,7 +270,9 @@ export default function Home() {
               <p>合同会社RIVZ</p>
             </div>
           </div>
-          <nav>
+          
+          {/* PC用ナビゲーション */}
+          <nav className="desktop-nav">
             <ul>
               <li>
                 <a href="#">初めての方はこちら</a>
@@ -282,10 +297,81 @@ export default function Home() {
               </li>
             </ul>
           </nav>
-          <div className="contact-button">
-            <a href="#contact-form" className="free-consultation">
-              無料お見積り
-            </a>
+          
+          <div className="header-right">
+            <div className="contact-button">
+              <a href="#contact-form" className="free-consultation">
+                無料お見積り
+              </a>
+            </div>
+            
+            {/* ハンバーガーメニューボタン */}
+            <button 
+              className="hamburger-menu"
+              onClick={toggleMobileMenu}
+              aria-label="メニューを開く"
+            >
+              <span className={`hamburger-line ${isMobileMenuOpen ? 'active' : ''}`}></span>
+              <span className={`hamburger-line ${isMobileMenuOpen ? 'active' : ''}`}></span>
+              <span className={`hamburger-line ${isMobileMenuOpen ? 'active' : ''}`}></span>
+            </button>
+          </div>
+        </div>
+        
+        {/* モバイル用ドロワーメニュー */}
+        <div className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
+          <div className="mobile-menu-overlay" onClick={closeMobileMenu}></div>
+          <div className="mobile-menu-content">
+            <div className="mobile-menu-header">
+              <div className="mobile-logo">
+                <div className="logo-icon">
+                  <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="25,5 45,15 45,35 25,45 5,35 5,15" fill="#1a3a6c" />
+                  </svg>
+                </div>
+                <div className="logo-text">
+                  <h2>RIVZ</h2>
+                  <p>合同会社RIVZ</p>
+                </div>
+              </div>
+              <button 
+                className="close-menu"
+                onClick={closeMobileMenu}
+                aria-label="メニューを閉じる"
+              >
+                ×
+              </button>
+            </div>
+            <nav className="mobile-nav">
+              <ul>
+                <li>
+                  <a href="#" onClick={closeMobileMenu}>初めての方はこちら</a>
+                </li>
+                <li>
+                  <a href="#" onClick={closeMobileMenu}>料金</a>
+                </li>
+                <li>
+                  <a href="#" onClick={closeMobileMenu}>サービス内容</a>
+                </li>
+                <li>
+                  <a href="#" onClick={closeMobileMenu}>作業実績</a>
+                </li>
+                <li>
+                  <a href="#" onClick={closeMobileMenu}>お客様の声</a>
+                </li>
+                <li>
+                  <a href="#" onClick={closeMobileMenu}>対応エリア</a>
+                </li>
+                <li>
+                  <a href="#" onClick={closeMobileMenu}>当社について</a>
+                </li>
+              </ul>
+            </nav>
+            <div className="mobile-menu-cta">
+              <a href="#contact-form" className="mobile-consultation-button" onClick={closeMobileMenu}>
+                無料お見積り
+              </a>
+            </div>
           </div>
         </div>
       </header>
@@ -401,9 +487,9 @@ export default function Home() {
 
               <div className="service-main-content">
                 <h2 className="service-main-title">業界経験豊富な専門家による</h2>
-                <h2 className="service-highlight-title">確かな目利きで資産に変換</h2>
+                <h2 className="service-highlight-title">確かな目利きで資産へ</h2>
                 <h2 className="service-main-title">
-                  買取は一番高く、処分は一番安く<span className="dot">。</span>
+                  買取は高く、処分は安く<span className="dot"></span>
                 </h2>
 
                 <div className="service-description">
