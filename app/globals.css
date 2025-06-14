@@ -944,12 +944,14 @@
   border-radius: 15px;
   padding: 30px;
   border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: left;
 }
 
 .philosophy-description p {
   font-size: 18px;
   line-height: 1.8;
   opacity: 0.95;
+  text-align: left;
 }
 
 /* 整理・片付けの実績例セクション - 青系背景に更新 */
@@ -2309,6 +2311,32 @@ footer {
 
   .quote-text::after {
     right: -20px;
+  }
+
+  .philosophy-description p {
+    font-size: 14px;
+  }
+  
+  /* フッター情報の調整 */
+  .footer-content {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  /* h2見出しのletter-spacing調整 */
+  h2 {
+    letter-spacing: normal;
+  }
+
+  .mobile-break::before {
+    content: "\A";
+    white-space: pre;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-break {
+    display: none;
   }
 }
 

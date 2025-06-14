@@ -548,7 +548,7 @@ export default function Home() {
                   <p>壊れている電化製品、ひび割れや欠けた食器など、</p>
                   <p>&nbsp;</p>
                   <p>どんな状態でも対応可能です。</p>
-                  <p>商品によってはビンテージやアンティークとして価値が上がることも。</p>
+                  <p>商品によってはビンテージや<br className="mobile-break" />アンティークとして価値が上がることも。</p>
                 </div>
 
                 <div className="real-estate-button-container">
@@ -679,7 +679,7 @@ export default function Home() {
               <div className="step-card stagger-item" ref={(el) => (stepCardRefs.current[0] = el)}>
                 <div className="step-number">STEP 1</div>
                 <div className="step-image">
-                  <Image src="/images/utiawase01.png" alt="お問い合わせ" width={300} height={300} />
+                  <Image src="/images/utiawase05.png" alt="お問い合わせ" width={300} height={300} />
                 </div>
                 <h3 className="step-title">無料でご相談・お問い合わせ</h3>
                 <p className="step-description">
@@ -699,7 +699,7 @@ export default function Home() {
               <div className="step-card stagger-item" ref={(el) => (stepCardRefs.current[2] = el)}>
                 <div className="step-number">STEP 3</div>
                 <div className="step-image">
-                  <Image src="/images/utiawase03.png" alt="作業日決定" width={300} height={300} />
+                  <Image src="/images/utiawase07.png" alt="作業日決定" width={300} height={300} />
                 </div>
                 <h3 className="step-title">無料お見積もり</h3>
                 <p className="step-description">
@@ -783,7 +783,9 @@ export default function Home() {
 
             <div className="rivz-content">
               <div className="rivz-header">
-                <h2 className="rivz-main-title">想いを整え、価値に変え、未来へつなぐ</h2>
+                <h2 className="rivz-main-title">
+                  想いを整え、価値に変え、<br className="mobile-break" />未来へつなぐ
+                </h2>
                 <p className="rivz-subtitle">社名に込めた想い</p>
               </div>
 
@@ -823,7 +825,9 @@ export default function Home() {
 
               <div className="rivz-philosophy">
                 <div className="philosophy-quote">
-                  <p className="quote-text">"遺品"から始まり、"不動産"をつなぎ、"価値"へ変える</p>
+                  <p className="quote-text">
+                    "遺品"から始まり、<br className="mobile-break" />"不動産"をつなぎ、"価値"へ変える
+                  </p>
                 </div>
 
                 <div className="philosophy-description">
@@ -850,7 +854,7 @@ export default function Home() {
           <div className="contact-form-container">
             <div className="contact-form-header">
               <h2 className="contact-form-title">お問い合わせ</h2>
-              <p className="contact-form-subtitle">ご質問・ご相談はお気軽にお問い合わせください</p>
+              <p className="contact-form-subtitle">ご質問・ご相談はお気軽に<br />お問い合わせください</p>
             </div>
 
             <div className="contact-form-content">
